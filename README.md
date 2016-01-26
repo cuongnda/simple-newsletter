@@ -8,3 +8,4 @@ QUICKSTART
 - Enter source code folder and run: npm install
 - Check the config.js file for any settings reference
 - Start application with : MANDRILL_API_KEY=YOUR_KEY npm start . Where YOUR_KEY is your API key from Mandrill
+Now, access http://127.0.0.1:3000/ in your browser and enjoy!
