@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
+var config = require('./config.js');
 var app = express();
 
 // view engine setup
@@ -56,5 +57,24 @@ app.use(function (err, req, res, next) {
     });
 });
 
+// Setup sqllite database for testing purpose
+var sqlite3 = require('sqlite3').verbose();
+var db = new sqlite3.Database(':memory:');
+
+var fs = require("fs");
+var file = config.sqlitedb.path;
+var exists = fs.existsSync(file);
+if (!exists) {
+    console.log("Creating DB file.");
+    fs.openSync(file, "w");
+} else {
+    fs.unlink(file);
+    console.log("Creating DB file.");
+    fs.openSync(file, "w");
+}
+var sqlite3 = require("sqlite3").verbose();
+var db = new sqlite3.Database(file);
+db.run("CREATE TABLE newsletter_subscriber (username TEXT, email TEXT)");
+db.close()
 
 module.exports = app;

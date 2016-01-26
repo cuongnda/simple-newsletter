@@ -45,6 +45,19 @@ router.post('/', function (req, res, next) {
         console.log('A mandrill error occurred: ' + e.name + ' - ' + e.message);
     });
 
+    //Save user data to database
+    var sqlite3 = require("sqlite3").verbose();
+    var db = new sqlite3.Database(config.sqlitedb.path);
+    //TODO: Check for exist, maybe?
+    var query = "INSERT INTO newsletter_subscriber (username, email) VALUES ('" + username + "','" + email + "');";
+    db.run(query);
+
+    //Code below is just for demo purpose
+    db.each("SELECT rowid AS id, username, email FROM newsletter_subscriber", function (err, row) {
+        console.log(row.id + ": " + row.username + ", " + row.email);
+    });
+
+    db.close();
     res.render('confirmation', {username: username});
 });
 

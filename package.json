@@ -13,6 +13,7 @@
     "jade": "~1.11.0",
     "morgan": "~1.6.1",
     "serve-favicon": "~2.3.0",
-    "mandrill-api":"~1.0.45"
+    "mandrill-api":"~1.0.45",
+    "sqlite3":"~3.1.1"
   }
 }
