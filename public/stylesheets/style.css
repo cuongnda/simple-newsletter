@@ -1,0 +1,19 @@
+body {
+    padding: 100px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+form.signup label {
+    display: block;
+}
+
+form.signup label.error {
+    color: red;
+    margin-top: 10px;
+}
+form.signup .form-control {
+    border-radius: 0;
+}
+div.confirmation-message {
+    text-align: center;
+}

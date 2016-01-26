@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h1= title
+  div.container
+      form.signup.col-md-4.col-md-offset-4(method="post", action="")
+          div.form-group#input-username
+              label Username*:
+              input.form-control(name="username", placeholder="John")
+          div.form-group#input-email
+              label Email*:
+              input.form-control(name="email", placeholder="john@doe.com")
+          div.form-group
+              button.btn.btn-default.pull-right Send
